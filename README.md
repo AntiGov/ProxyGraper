@@ -17,3 +17,11 @@ Thread::Queue
 #Modules Instalation :
 
 cpan -i WWW::Mechanize
+
+#Change Proxy entirely
+
+use proxyon.sh to change proxy for entire system
+
+#To Disable it 
+
+use proxyoff.sh to disable the proxy for entire system

@@ -17,7 +17,7 @@ if [ $# -eq 2 ]
 
   grep PATH /etc/environment > pxy.t;
   printf \
-  "http_proxy=http://$1:$2/\n\
+ "http_proxy=http://$1:$2/\n\
   https_proxy=http://$1:$2/\n\
   ftp_proxy=http://$1:$2/\n\
   no_proxy=\"localhost,127.0.0.1,localaddress,.localdomain.com\"\n\
