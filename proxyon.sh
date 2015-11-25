@@ -11,7 +11,7 @@ if [ $# -eq 2 ]
   then
 
   gsettings set org.gnome.system.proxy mode 'manual' ;
-  gsettings set org.gnome.system.proxy.http host '$1';
+  gsettings set org.gnome.system.proxy.http host $1;
   gsettings set org.gnome.system.proxy.http port $2;
 
 
