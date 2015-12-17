@@ -6,9 +6,6 @@ use strict;
 use warnings;
 use WWW::Mechanize;
 use WWW::UserAgent::Random;
-use LWP::UserAgent;
-use HTML::Parser ();
-use Data::Validate::IP qw(is_ipv4);
 use Term::ANSIColor qw(:constants);
 use Geo::IP;
 use threads;
@@ -46,8 +43,8 @@ while ( $page <= 10 ) {    #greping 10 Pages max 67
     $mech->timeout(15);
     my $url = "http://www.proxylisty.com/ip-proxylist-$page";
     $mech->get($url);
+    
     my $res = $mech->content;
-    say($res);
     my @b   = parse($res);
     push( @result, @b );
 
@@ -84,6 +81,7 @@ sub SecSite {
         $mech->timeout(15);
         my $url = "https://proxy-list.org/english/index.php?p=$page";
         $mech->get($url);
+      sleep(2);
 
         my $res = $mech->content;
 
@@ -118,27 +116,17 @@ sub SecSite {
 
 #Parsing Html content from proxy:port
 sub parse {
-    my $res = $_[0];
-    my $p = HTML::Parser->new( text_h => [ \&text_rtn, 'text' ] );
-    $p->parse($res);
+    my $a = $_[0];
+    my @proxy;
+     my %x = ( $a =~ /<td>(\d+\.\d+\.\d+\.\d+)<\/td>\s+<td><a\shref='\S+'\stitle='\S+\s\S+\s\S+\s\S+'>(\d+)<\/a><\/td>/g );
 
-    sub text_rtn {
-        foreach (@_) {
-            if ( is_ipv4($_) ) {
-                $ip = $_;
-            }
-            elsif ( $_ =~ /^[\d]{2}$|^[\d]{4}$/ ) {
-                $port = $_;
-                my $chk = ban($port)
-                    ;    #Checking Some Badass Numbers And Ignoring them
-                if ($chk) {
-                    next;
-                }
-                push( @proxy, ( $ip . ":" . $port ) );
-            }
+        while(my ($k,$v) = each %x ){
+            my $url = ($k.":".$v);
+            push(@proxy,$url);
+
         }
-    }
-    return (@proxy);
+      
+    return @proxy;
 }
 
 sub parse2 {
@@ -204,16 +192,4 @@ sub ipInfo {
     open( SUCCESSFILE, '>>success.txt' );
     print SUCCESSFILE $ok . "\n";
     close(SUCCESSFILE);
-}
-
-sub ban {
-    my $b       = $_[0];
-    my @ban     = ( 10 .. 70 );
-    my $success = 0;
-    foreach my $num (@ban) {
-        if ( $num == $b ) {
-            $success = 1;
-        }
-    }
-    return $success;
 }
