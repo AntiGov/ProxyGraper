@@ -9,8 +9,6 @@ Get Free Proxy Using ProxyGraper
 WWW::Mechanize
 WWW::UserAgent::Random
 LWP::UserAgent
-HTML::Parser
-Data::Validate::IP
 Geo::IP
 threads
 Thread::Queue
