@@ -28,10 +28,13 @@ my @info = ($allo =~ /<BR><BR>([a-zA-Z].+:)<UL>\s<LI>([0-9]+-[0-9]+-[0-9]+:\s\S+
 
 say("CloudFlareDns: ".$dns[0]) if defined($dns[0]);
 say("CloudFlareDns: ".$dns[1]) if defined($dns[1]);
+if(@info){
 say("------------------------");
 say($info[0]) if defined($info[0]);
 say($info[1]) if defined($info[1]);
 say($info[2]) if defined($info[2]);
 say($info[3]) if defined($info[3]);
-
+}else{
+say("No direct-connect IP address was found for this domain.");
+}
 
