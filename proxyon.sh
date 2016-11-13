@@ -35,7 +35,6 @@ if [ $# -eq 2 ]
   Acquire::https::proxy \"https://$1:$2/\";\n" > /etc/apt/apt.conf.d/95proxies;
 
   rm -rf pxy.t;
-
   else
 
   printf "Usage $0 <proxy_ip> <proxy_port>\n";
