@@ -1,0 +1,81 @@
+#!/usr/bin/env perl
+# G66K @MA
+# ##spoonfed irc.freenode.net
+# irssi plugin yandex translator
+# /yandex word, to translates english-to-arabic
+# Public Domain
+# Sat Mar 16 06:20 EET 2016
+
+use warnings;
+use strict;
+use HTML::Entities ();
+use Irssi ();
+use LWP::Simple ();
+use utf8;
+use JSON::Parse ':all';
+use vars qw($VERSION %IRSSI);
+
+$VERSION = "0.1";
+%IRSSI = (
+    authors     => 'G66K @MA',
+    contact     => '##spoonfed irc.freenode.net',
+    name        => 'irssi yandex translator',
+    description => '/yandex command, translates english-to-arabic.',
+    license     => 'Public Domain',
+    changed     => 'Sat Mar 16 06:20 EET 2016',
+);
+
+Irssi::command_bind(
+    'yandex' => sub {
+        my @params = split /\s+/, shift;
+        unless (@params) {
+            Irssi::print("yandex: Usage: "
+                . (substr(Irssi::settings_get_str('cmdchars'), 0, 1) || "/")
+                . "yandex word");
+            return;
+        }
+
+        my $word = $params[0];
+        $word =~ s/ /+/g;
+        $word =~ s/(\W)/'%' . unpack "H*", $1/eg;
+
+        if (my $response =
+            LWP::Simple::get(
+                'https://translate.yandex.net/api/v1.5/tr.json/translate?lang=en-ar&key=trnsl.1.1.20161113T150940Z.655c5c6f9953fc5b.73135ee5f597abb9081a199a4b7610a7d2f19733&text=' . $word))
+        {
+           
+	 my $content =  parse_json ($response);
+         my $arabic  =  HTML::Entities::decode(@{$content->{'text'}});
+         my $code    = $content->{'code'};
+	 if($code == 200){ 	
+
+            if($arabic) {
+		  Irssi::print("Translate: {$arabic}");
+            	  } else {
+             	  Irssi::print("Translate: $word: No translations.");
+             }
+
+	   }elsif($code == 401){
+		 	
+		 Irssi::print("Translate: Invalid API key.")
+	   }elsif($code == 402){
+		 	
+		 Irssi::print("Translate: Blocked API key.")
+	   }elsif($code == 404){
+		 	
+		 Irssi::print("Translate: Exceeded the daily limit on the amount of translated text.")
+	   }elsif($code == 413){
+		 Irssi::print("Translate: Exceeded the maximum text size.");
+	   }elsif($code == 422){
+		 Irssi::print("Translate: The text cannot be translated.");
+	   }elsif($code == 501){
+		 Irssi::print("Translate: The specified translation direction is not supported.");
+	   }else{
+		 Irssi::print ("Translate: Merchant Fails");
+	}
+
+           } else {
+            Irssi::print("Translate: Yandex Failed.");
+        }
+    }
+);
