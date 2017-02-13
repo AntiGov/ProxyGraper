@@ -12,7 +12,7 @@ use utf8;
 use open ':std', ':encoding(UTF-8)';
 
 my $username = 'G66K'; #Your UserName
-my $password = 'P4$$w0rd'; #Your PassWord
+my $password = 'P4$$WORD'; #Your PassWord
 
 my $url = 'http://locker-it.com/vb/index.html';
 
@@ -50,5 +50,6 @@ my @newPost = ($content =~ /style=\"font-weight:bold\">(.+)<\/a>/g);
 		say $post if defined $post;
 say("############################ المشاركات الجديدة ##############################");
    }
-	}
+	}else{say("عذراً, ليست هناك مواضيع أو مشاركات جديدة للمشاهدة.");}
+	
 }
