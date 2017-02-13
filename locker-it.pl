@@ -33,7 +33,6 @@ $mech->get('http://locker-it.com/vb/search-do_getnew.html');
 my $content = $mech->content();
 
 if($content =~ /<a\s+href=member-u_5853\.html>$username<\/a>/g){
-say "Success";
 
 if($content =~ /<div\s[^>]+>\s+<[a-z]+>(.+?)\s+,/){
 	my $user = $1 if defined $1;
