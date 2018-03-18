@@ -18,8 +18,6 @@ int portScan(char *hostname, int port);
  
 int main(int argc , char **argv)
 {
-   
-     
     if(argc != 3){
     	printf("Usage: %s host port\n", argv[0]);
     	exit(1);
@@ -27,9 +25,10 @@ int main(int argc , char **argv)
      
      char *hostname = argv[1];
      int port = atoll(argv[2]);
+     
      printf("host: %s port: %d\n",hostname,port);
+     
      if(portScan(hostname,port)){
-
      	printf("%s\n", "success");
      }else{
      	printf("%s\n", "fails");
@@ -38,7 +37,7 @@ int main(int argc , char **argv)
 }
 
 int portScan(char *hostname, int port){
-	struct hostent *host;
+    struct hostent *host;
     int err ,sock;
   
     struct sockaddr_in sa;
