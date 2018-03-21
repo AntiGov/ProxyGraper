@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# CODED BY G66K @ ma
+# CODED BY AntiGov @ ma
 # IDEA BY STRYNGS
 
 use strict;
