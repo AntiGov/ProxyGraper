@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-#Author: G66K
+#Author: AntiGov
 # http://locker-it.com Bot to check new Post And Messages
 
 use  strict;
