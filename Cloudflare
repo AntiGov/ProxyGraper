@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-#CODED BY G66K
+#CODED BY AntiGov
 #Retrieve Real IP behind cloudflare
 use WWW::Mechanize;
 use strict;
