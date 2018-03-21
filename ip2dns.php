@@ -1,6 +1,6 @@
 <?php 
 /*
-* IP2DNS coded by G66k
+* IP2DNS coded by AntiGov
 * FREENODE ##SPOONFED
 */
 
