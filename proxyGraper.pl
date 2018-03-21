@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-#ProxyGraper Coded By G66K
+#ProxyGraper Coded By AntiGov
 
 #Requires Modules
 use strict;
