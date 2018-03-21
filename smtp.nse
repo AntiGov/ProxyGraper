@@ -1,7 +1,7 @@
 description=[[
 Checks if an SMTP port is open.
 ]]
-author = "G66K"
+author = "AntiGov"
 license = "Same as Nmap--See http://nmap.org/book/man-legal.html"
 categories = {"default", "discovery", "external", "intrusive"}
 local shortport = require ('shortport')
