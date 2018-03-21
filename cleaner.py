@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#Author: G66k @ MA
+#Author: AntiGov @ MA
 #Description: remove duplicate from two files
 
 import sys
