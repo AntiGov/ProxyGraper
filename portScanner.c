@@ -1,5 +1,5 @@
 /**
-* Author : G66K @ MA
+* Author : AntiGov @ MA
 * Simple Single Port Scanner
 **/
 
