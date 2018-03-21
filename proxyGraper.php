@@ -1,6 +1,6 @@
 <?php
 #!/usr/bin/php
-#   Author: G66K   
+#   Author: AntiGov   
 #   ProxyGraper: Grap and check Proxy
 #   @MA
 
