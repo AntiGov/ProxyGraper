@@ -1,5 +1,5 @@
 #/bin/bash
-#Coded By G66K
+#Coded By AntiGov
 #Enable Proxy For Entire SYstem
 
 if [ $(id -u) -ne 0 ]; then
