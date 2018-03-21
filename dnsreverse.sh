@@ -1,5 +1,5 @@
 #!/bin/bash
-#Author: G66K
+#Author: AntiGov
 
 usage()
 {
