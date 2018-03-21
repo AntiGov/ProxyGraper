@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-#Author: G66K @ MA
+#Author: AntiGov @ MA
 #Description: LooKup single ip or file mass looKup
 
 use strict;
