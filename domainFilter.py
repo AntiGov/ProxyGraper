@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#Author: G66K @ MA
+#Author: AntiGov @ MA
 #Description: remove specific domain from domainlist
 
 import re
